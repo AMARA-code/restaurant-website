@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Place your order from Éclat's exquisite menu for delivery or pickup.">
+    <title>Order | Éclat Fine Dining</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">Éclat</a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="menu.html" class="nav-link">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reserve.html" class="nav-link">Reservations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link cart-icon"><i class="fas fa-shopping-cart"></i> <span id="cart-count">0</span></a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Order Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Place Your Order</h1>
+            <p>Exquisite cuisine delivered to your doorstep</p>
+        </div>
+    </section>
+
+    <!-- Order Form -->
+    <section class="order section-padding">
+        <div class="container">
+            <div class="order-container">
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div id="order-items">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    <div class="order-total">
+                        <h3>Total: $<span id="order-total-price">0</span></h3>
+                    </div>
+                </div>
+                <div class="order-form">
+                    <h2>Delivery Information</h2>
+                    <form action="https://formspree.io/f/mdklbqpl" method="POST" id="order-form">
+                        <input type="hidden" name="order_details" id="order-details">
+                        <input type="hidden" name="order_total" id="order-total">
+                        
+                        <div class="form-group">
+                            <label for="order-name">Full Name</label>
+                            <input type="text" id="order-name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-email">Email Address</label>
+                            <input type="email" id="order-email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-phone">Phone Number</label>
+                            <input type="tel" id="order-phone" name="phone" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-address">Delivery Address</label>
+                            <textarea id="order-address" name="address" rows="3" required></textarea>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="order-date">Preferred Delivery Date</label>
+                                <input type="date" id="order-date" name="delivery_date" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="order-time">Preferred Delivery Time</label>
+                                <input type="time" id="order-time" name="delivery_time" required>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="order-notes">Special Instructions</label>
+                            <textarea id="order-notes" name="special_instructions" rows="3"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Place Order</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+<script src="script.js"></script>
+</body>
+</html>

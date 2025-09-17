@@ -1,0 +1,1995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Éclat | Premium Menu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Base Styles */
+        :root {
+            --dark-bg: #0f0f0f;
+            --darker-bg: #080808;
+            --light-text: #f5f5f5;
+            --accent-color: #8b0000;
+            --accent-hover: #a52a2a;
+            --secondary-color: #2c2c2c;
+            --tertiary-color: #3d3d3d;
+            --text-muted: #a0a0a0;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--light-text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .bg-dark {
+            background-color: var(--darker-bg);
+        }
+
+        /* Header & Navigation */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            padding: 0.1em 2em;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--light-text);
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-item {
+            margin-left: 30px;
+        }
+
+        .nav-link {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: var(--transition);
+            position: relative;
+        }
+    
+        .nav-link:hover, .nav-link.active {
+            color: var(--accent-color);
+        }
+
+        .cart-icon {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            background: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            position: absolute;
+            top: -10px;
+            right: -10px;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            background-color: var(--light-text);
+            transition: var(--transition);
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            border-radius: 2px;
+            text-decoration: none;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: var(--transition);
+            font-size: 14px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--light-text);
+            border: 1px solid var(--light-text);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--light-text);
+            color: var(--dark-bg);
+        }
+
+        /* Page Hero */
+        .page-hero {
+            height: 50vh;
+            background: linear-gradient(rgba(32, 31, 31, 0.4), rgba(27, 27, 27, 0.9)), url(images/redd-francisco-o1SDSKCe8IE-unsplash.jpg) no-repeat center center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+            background-position: center ;
+        }
+
+        .page-hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        /* Menu Navigation */
+        .menu-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding: 30px 0;
+            background: var(--darker-bg);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .category-link {
+            padding: 10px 25px;
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            text-decoration: none;
+            border-radius: 30px;
+            transition: var(--transition);
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .category-link:hover, .category-link.active {
+            background-color: var(--accent-color);
+        }
+
+        /* Modern Menu Grid */
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 50px  0;
+       
+        }
+
+        .menu-item {
+            background: var(--secondary-color);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        }
+   .item-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .menu-item:hover .item-image img {
+            transform: scale(1.1);
+        }
+
+        .item-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--accent-color);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .item-info {
+            padding: 20px;
+        }
+
+        .item-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--light-text);
+        }
+
+        .item-info p {
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .item-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 15px;
+        }
+
+        .item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--accent-color);
+        }
+
+        .item-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-add, .btn-buy {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 13px;
+            font-weight: 500;
+        }
+
+        .btn-add {
+            background-color: transparent;
+            color: var(--light-text);
+            border: 1px solid var(--light-text);
+        }
+
+        .btn-add:hover {
+            background-color: var(--light-text);
+            color: var(--dark-bg);
+        }
+
+        .btn-buy {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+        }
+
+        .btn-buy:hover {
+            background-color: var(--accent-hover);
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            padding-top: 30px;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 2px;
+            background-color: var(--accent-color);
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Cart Modal */
+        .cart-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .cart-modal-content {
+            background-color: var(--darker-bg);
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .cart-close {
+            color: var(--text-muted);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cart-close:hover {
+            color: var(--light-text);
+        }
+
+        .cart-title {
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .cart-items {
+            margin-bottom: 20px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--tertiary-color);
+        }
+
+        .cart-item-info h4 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .cart-item-info p {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .cart-item-price {
+            font-weight: 600;
+            color: var(--accent-color);
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .quantity-btn {
+            background: var(--secondary-color);
+            border: none;
+            color: var(--light-text);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .quantity-btn:hover {
+            background: var(--accent-color);
+        }
+
+        .cart-item-remove {
+            background: transparent;
+            border: none;
+            color: #ff6b6b;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .cart-item-remove:hover {
+            color: #ff3838;
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-top: 2px solid var(--accent-color);
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .cart-buttons {
+            display: flex;
+            justify-content: flex-end;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        /* Formspree Modal */
+        .formspree-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+        }
+
+        .formspree-modal-content {
+            background-color: var(--darker-bg);
+            margin: 5% auto;
+            padding: 30px;
+            border: 1px solid var(--secondary-color);
+            border-radius: 10px;
+            width: 90%;
+            max-width: 500px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+
+        .formspree-close {
+            color: var(--text-muted);
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .formspree-close:hover {
+            color: var(--light-text);
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            background-color: var(--secondary-color);
+            border: 1px solid var(--tertiary-color);
+            border-radius: 3px;
+            color: var(--light-text);
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+        }
+
+        .order-summary {
+            background: var(--secondary-color);
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .order-summary h4 {
+            margin-bottom: 10px;
+            border-bottom: 1px solid var(--tertiary-color);
+            padding-bottom: 5px;
+        }
+
+        .order-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .menu-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: var(--dark-bg);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+                padding: 20px 0;
+            }
+            
+            .nav-menu.active {
+                left: 0;
+            }
+            
+            .nav-item {
+                margin: 15px 0;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .cart-modal-content, .formspree-modal-content {
+                width: 95%;
+                padding: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .category-link {
+                padding: 8px 15px;
+                font-size: 13px;
+            }
+                 .page-hero {
+                    max-height: 40vh;
+                 }
+            
+            .item-actions {
+                flex-direction: column;
+            }
+            
+            .btn-add, .btn-buy {
+                width: 100%;
+                text-align: center;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+
+            .cart-item-quantity {
+                width: 100%;
+                justify-content: space-between;
+            }
+
+            .cart-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">Éclat</a>
+                <ul class="nav-menu">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="menu.html" class="nav-link active">Menu</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="reserve.html" class="nav-link">Reservations</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">Contact</a>
+                    </li>
+                
+
+
+                       
+                    <li class="nav-item">
+                        <a href="#" class="nav-link cart-icon"><i class="fas fa-shopping-cart"></i> <span class="cart-count">0</span></a>
+                    </li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Menu Hero -->
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Menu</h1>
+            <p>Exquisite culinary creations crafted with precision</p>
+        </div>
+    </section>
+
+    <!-- Menu Navigation -->
+    <section class="menu-nav">
+        <div class="container">
+            <div class="menu-categories">
+                <a href="#appetizers" class="category-link active">Appetizers</a>
+                <a href="#mains" class="category-link">Main Course</a>
+                <a href="#desserts" class="category-link">Desserts</a>
+                <a href="#specials" class="category-link">Chef's Specials</a>
+                <a href="#drinks" class="category-link">Drinks</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Appetizers -->
+    <section id="appetizers" class="menu-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Appetizers</h2>
+                <p class="section-subtitle">Begin your culinary journey</p>
+            </div>
+            <div class="menu-grid">
+                <!-- Appetizer 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 5.33.24 AM.jpeg" alt="GArlic Bread">
+                        <div class="item-badge">Signature</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Garlic Bread</h3>
+                        <p>Crispy bread topped with garlic butter and herbs.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$89</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="1" data-name="Garlic Bread" data-price="89" data-img="https://images.unsplash.com/photo-1619894991209-32b8fb1d5ce3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Zm9pZSUyMGdyYXN8ZW58MHx极MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="1" data-name="Garlic Bread" data-price="89">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+         
+                <!-- Appetizer 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 5.39.21 AM.jpeg" alt="Oceanic Caviar">
+                        <div class="item-badge">Premium</div>
+                    </div>
+                    <div class="item-info">
+                        <h3 id="oceaniccaviar">Mozzarella Sticks</h3>
+                        <p>Golden-fried sticks with gooey mozzarella inside</p>
+                        <div class="item-meta">
+                            <span class="item-price">$85</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="2" data-name="Mozzarella Sticks" data-price="85" data-img="https://images.unsplash.com/photo-1587334274527-ba54f0b5a357?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2F2aWFyfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="2" data-name="Mozzarella Sticks" data-price="85">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Appetizer 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/uladzislau-petrushkevich-l_XJkmaBQ_E-unsplash.jpg" alt="Truffle Arancini">
+                    </div>
+                    <div class="item-info">
+                        <h3>Truffle Arancini</h3>
+                        <p>Black truffle, wild mushroom, parmesan cream</p>
+                        <div class="item-meta">
+                            <span class="item-price">$26</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="3" data-name="Truffle Arancini" data-price="26" data-img="https://images.unsplash.com/photo-1633896949678-1b4极11d6b0a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHRydWZmbGUlMjBhcmFuY2luaXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="3" data-name="Truffle Arancini" data-price="26">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appetizer 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/gina-s-auckland-v0IOkBBK9L4-unsplash.jpg" alt="Scallop Ceviche">
+                    </div>
+                    <div class="item-info">
+                        <h3>Scallop Ceviche</h3>
+                        <p>Yuzu marinade, avocado, crispy wonton</p>
+                        <div class="item-meta">
+                            <span class="item-price">$29</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="4" data-name="Scallop Ceviche" data-price="29" data-img="https://images.unsplash.com/photo-1603360946369-dc9bbd814503?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8极HNjYWxsb3AlMjBjZXZpY2hlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="4" data-name="Scallop Ceviche" data-price="29">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appetizer 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 5.42.53 AM.jpeg" alt="Oyster Tasting">
+                        <div class="item-badge">Seasonal</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Chicken Wings</h3>
+                        <p>Juicy wings tossed in spicy buffalo or smoky BBQ sauce.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$36</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="5" data-name="Chicken Wings" data-price="36" data-img="https://images.unsplash.com/photo-1516100882582-96c3a05fe590?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTR8fG95c3RlciUyMHRhc3Rpbmd8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="5" data-name="Chicken Wings" data-price="36">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appetizer 6 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 4.10.09 AM.jpeg" alt="Hamachi Carpaccio">
+                    </div>
+                    <div class="item-info">
+                      
+                        <h3 >Hamachi Carpaccio</h3>
+                        <p>Yuzu kosho, truffle oil, micro cilantro</p>
+                        <div class="item-meta">
+                            <span class="item-price">$28</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="6" data-name="Hamachi Carpaccio" data-price="28" data-img="https://images.unsplash.com/photo-1625943553695-10dca9395c23?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y2FycGFjY2lvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=极0">Add to Cart</button>
+                                <button class="btn-buy" data-id="6" data-name="Hamachi Carpaccio" data-price="28">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appetizer 7 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 5.45.39 AM.jpeg" alt="Tuna Tartare">
+                    </div>
+                    <div class="item-info">
+                        <h3>Vegetable Spring Rolls</h3>
+                        <p>Crunchy rolls filled with seasoned vegetables</p>
+                        <div class="item-meta">
+                            <span class="item-price">$24</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="7" data-name="Vegetable Spring Rolls" data-price="24" data-img="https://images.unsplash.com/photo-1559847844-d721426d1极9d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHR1bmElMjB0YXJ0YXJlfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="7" data-name="Vegetable Spring Rolls" data-price="24">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Appetizer 8 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 5.48.46 AM.jpeg" alt="Hummus with Pita Bread">
+                    </div>
+                    <div class="item-info">
+                        <h3>Hummus with Pita Bread</h3>
+                        <p>Creamy chickpea dip served with warm pita slices</p>
+                        <div class="item-meta">
+                            <span class="item-price">$22</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="8" data-name="Hummus with Pita Bread" data-price="22" data-img="https://images.unsplash.com/photo-1529042410759-befb1204b468?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGJydXNjaGV0dGF8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="8" data-name="Hummus with Pita Bread" data-price="22">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Course -->
+    <section id="mains" class="menu-section section-padding bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Main Course</h2>
+                <p class="section-subtitle">Exquisite centerpieces</p>
+            </div>
+            <div class="menu-grid">
+                <!-- Main 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-07 at 6.27.11 AM (1).jpeg" alt="grilled chicken">
+                        <div class="item-badge">Signature</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Grilled Chicken with Herbs</h3>
+                        <p>Tender chicken breast seasoned with fresh herbs</p>
+                        <div class="item-meta">
+                            <span class="item-price">$125</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="9" data-name="Grilled Chicken with Herbs" data-price="125" data-img="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHdhZ3l1JTIwc3RlYWt8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="9" data-name="Grilled Chicken with Herbs" data-price="125">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/alexandru-bogdan-ghita-UeYkqQh4PoI-unsplash (1).jpg" alt="Beaf Steak">
+                        <div class="item-badge">Premium</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Beef Steak with Mushroom Sauce</h3>
+                        <p>Juicy beef steak topped with creamy mushroom sauce.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$78</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="10" data-name="Beef Steak with Mushroom Sauce" data-price="78" data-img="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NX极8bG9ic3RlciUyMHRoZXJtaWRvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="10" data-name="Beef Steak with Mushroom Sauce" data-price="78">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+
+                <!-- Main 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 5.57.28 AM.jpeg" alt="Baked Salmon">
+                    </div>
+                    <div class="item-info">
+                        <h3>Baked Salmon with Lemon Butter</h3>
+                        <p>Flaky salmon baked with lemon and butter.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$68</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="11" data-name="Baked Salmon with Lemon Butter" data-price="68" data-img="https://images.unsplash.com/photo-1608571423906-2da1e376b7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2极8Mnx8cmFjayUyMG9mJTIwbGFtYnxlbnww极HwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="11" data-name="Baked Salmon with Lemon Butter" data-price="68">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.04.07 AM.jpeg" alt="Chicken Tikka">
+                        <div class="item-badge">Tikka Specials</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Chicken Tikka Masala</h3>
+                        <p>Spiced chicken in a creamy tomato-based curry.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$42</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="12" data-name="Chicken Tikka Masala" data-price="42" data-img="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG11c2hyb29tJTIwcmlzb3R0b3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="12" data-name="Chicken Tikka Masala" data-price="42">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.06.54 AM.jpeg" alt="">
+                    </div>
+                    <div class="item-info">
+                        <h3>Vegetable Stir Fry</h3>
+                        <p>Fresh vegetables sautéed in a savory soy-based sauce.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$58</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="13" data-name="Vegetable Stir Fry" data-price="58" data-img="https://images.unsplash.com/photo-1604503468506-a6da5e6ad46b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHVjayUyMGJyZWFzdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="13" data-name="Vegetable Stir Fry" data-price="58">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main 6 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.08.42 AM.jpeg" alt="lamb Curry">
+                        <div class="item-badge">For Two</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Lamb Curry</h3>
+                        <p>Slow-cooked lamb in a rich and aromatic curry sauce.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$145</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="14" data-name="Lamb Curry" data-price="145" data-img="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VhZm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="14" data-name="Lamb Curry" data-price="145">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main 7 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.13.15 AM.jpeg" alt="Filet Mignon">
+                    </div>
+                    <div class="item-info">
+                        <h3>Grilled Prawns with Garlic Butter</h3>
+                        <p>Large prawns grilled to perfection with garlic butter</p>
+                        <div class="item-meta">
+                            <span class="item-price">$62</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="15" data-name="Grilled Prawns with Garlic Butter" data-price="62" data-img="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlsZXQlMjBtaWdub258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="15" data-name="Grilled Prawns with Garlic Butter" data-price="62">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Main 8 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.14.34 AM.jpeg" alt="roasted chicken">
+                    </div>
+                    <div class="item-info">
+                        <h3>Honey-Glazed Roasted Chicken</h3>
+                        <p>Slow-roasted chicken brushed with honey glaze.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$74</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="16" data-name="Honey-Glazed Roasted Chicken" data-price="74" data-img="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVhbCUyMGNob3B8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="16" data-name="Honey-Glazed Roasted Chicken" data-price="74">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Desserts -->
+    <section id="desserts" class="menu-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Desserts</h2>
+                <p class="section-subtitle">Sweet finales</p>
+            </div>
+            <div class="menu-grid">
+                <!-- Dessert 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.27.52 AM.jpeg" alt="Chocolate Symphony">
+                      
+                    </div>
+                    <div class="item-info">
+                        <h3>Chocolate Lava Cake </h3>
+                        <p>Warm chocolate cake with a gooey molten center</p>
+                        <div class="item-meta">
+                            <span class="item-price">$24</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="17" data-name="Chocolate Lava Cake" data-price="24" data-img="https://images.unsplash.com/photo-1623334044303-241021148842?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNob2NvbGF0ZSUyMGRlc3NlcnR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="17" data-name="Chocolate Lava Cake" data-price="24">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.25.46 AM.jpeg" alt="cheese Cake">
+                    </div>
+                    <div class="item-info">
+                        <h3>Cheesecake with Berries</h3>
+                        <p>Creamy cheesecake topped with fruity sauce</p>
+                        <div class="item-meta">
+                            <span class="item-price">$22</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="18" data-name="Cheesecake with Berries" data-price="22" data-img="https://images.unsplash.com/photo-1631051023565-e76853205146?ixlib=rb-4.0.3&ixid=M3wxMjA极fDB8MHxzZWFyY2h8NHx8c291ZmZsZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">极 to Cart</button>
+                                <button class="btn-buy" data-id="18" data-name="Cheesecake with Berries" data-price="22">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.23.11 AM.jpeg" alt="Brownies">
+                    <div class="item-badge">Signature</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Brownies with Icecream</h3>
+                        <p>Fudgy chocolate brownies served with a scoop of vanilla</p>
+                        <div class="item-meta">
+                            <span class="item-price">$32</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="19" data-name="Brownies with Icecream" data-price="20" data-img="https://images.unsplash.com/photo-1563729784474-d77dbb933a9e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8ZnJ1aXQlMjB0YXJ0fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="19" data-name="Brownies with Icecream" data-price="20">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.30.04 AM.jpeg" style="object-position: center 70%;" alt="Fruit Tart">
+                    </div>
+                    <div class="item-info">
+                        <h3>Friut Tart</h3>
+                        <p>Crisp pastry shell filled with custard and fresh seasonal fruits.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$18</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="20" data-name="Friut Tart" data-price="18" data-img="https://images.unsplash.com/photo-149963613621极-6f4ee915583e?ixlib=rb-4.0.3&ixid=M3wxMjA3f极B8MHxzZWFyY2h8NXx8Y3JlYW0lMjBicnVsZWV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="20" data-name="Friut Tart" data-price="18">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.34.19 AM.jpeg" alt="Tiramisu">
+                    </div>
+                    <div class="item-info">
+                        <h3>Panna Cotta</h3>
+                        <p>Silky Italian custard topped with berry coulis</p>
+                        <div class="item-meta">
+                            <span class="item-price">$16</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="21" data-name="Panna Cotta" data-price="16" data-img="https://images.unsplash.com/photo-1626700051175-681801c4c2d极?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8极Xx8dGlyYW1pc3V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="21" data-name="Panna Cotta" data-price="16">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert 6 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.37.50 AM.jpeg" style="object-position: center 60%;" alt="Macarons">
+                    </div>
+                    <div class="item-info">
+                        <h3>Macarons</h3>
+                        <p>Delicate French almond cookies with assorted fillings.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$17</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="22" data-name="Macarons" data-price="17" data-img="https://images.unsplash.com/photo-1559620192-032c4bc4674e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y2hlZXNlY2FrZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="22" data-name="Macarons" data-price="17">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert 7 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.40.46 AM.jpeg" style="object-position: center 70%;" alt="Chocolate Mousse">
+                    </div>
+                    <div class="item-info">
+                        <h3>Chocolate Mousse</h3>
+                        <p>Light and airy chocolate dessert topped with Strawberries.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$19</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="23" data-name="Chocolate Mousse" data-price="19" data-img="https://images.unsplash.com/photo-1578985545062-69928b极d9587?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2极8NHx8Y2hvY29sYXRlJTIwbGF2YSUyMGNha2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="23" data-name="Chocolate Mousse" data-price="19">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Dessert 8 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 6.42.45 AM.jpeg" alt="Icecream Sundae">
+                    </div>
+                    <div class="item-info">
+                        <h3>Icecream Sundae</h3>
+                        <p>Scoops of ice cream with chocolate syrup, nuts, and whipped cream.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$15</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="24" data-name="Icecream Sundae" data-price="15" data-img="https://images.unsplash.com/photo-148369502893极-5bb13f8648b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8cGlzdGFjaGlvJTIwZGVzc2VydHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="24" data-name="Icecream Sundae" data-price="15">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Chef's Specials -->
+    <section id="specials" class="menu-section section-padding bg-dark">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Pizza, Burger & Sandwitch</h2>
+                <p class="section-subtitle">Exclusive creations from our master chef</p>
+            </div>
+            <div class="menu-grid">
+                <!-- Special 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.25.53 AM.jpeg" alt="Beef Burger">
+                     
+                    </div>
+                    <div class="item-info">
+                        <h3>Classic Beef Burger</h3>
+                        <p>Juicy beef patty with lettuce, tomato, and cheese.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$145</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="25" data-name="Classic Beef Burger" data-price="145" data-img="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8f极dhZ3l1JTIwc3RlYWt8ZW58MHx8MHx8fDA%3D&auto=format&极it=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="25" data-name="Classic Beef Burger" data-price="145">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.22.00 AM.jpeg" alt="Chicken Fillet Burger">
+                        <div class="item-badge">Chef's Special</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Chicken Fillet Burger</h3>
+                        <p>Crispy chicken fillet with mayo and fresh veggies.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$95</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="26" data-name="Chicken Fillet Burger" data-price="95" data-img="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2极8NXx8bG9ic3R极ciUyMHRoZXJtaWRvcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="26" data-name="Chicken Fillet Burger" data-price="95">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.22.00 AM (1).jpeg" style="object-position: center 40%;" alt="Veggie Burger">
+                    </div>
+                    <div class="item-info">
+                        <h3>Veggie Burger</h3>
+                        <p>Plant-based patty with lettuce, tomato, and special sauce.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$78</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="27" data-name="Veggie Burger" data-price="78" data-img="https://images.unsplash.com/photo-1608571423906-2da1e376b7ea?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mn极8cmFjayUyMG9mJTIwbGFtYnxlbnwwfHwwf极x8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="27" data-name="Veggie Burger" data-price="78">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.29.49 AM.jpeg" style="object-position: center 70%;" alt="Club Sandwich">
+                        <div class="item-badge">Chef's Special</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Club Sandwich</h3>
+                        <p>Triple-layer sandwich with chicken, lettuce, and mayo.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$48</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="28" data-name="Club Sandwich" data-price="48" data-img="https://images.unsplash.com/photo-1476224203421-9ac39bcb3327?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG11c2hyb29tJTIwcmlzb3R0b3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="28" data-name="Club Sandwich" data-price="48">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                   
+                
+
+                <!-- Special 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.29.50 AM.jpeg" alt="Grilled Cheese Sandwich">
+                    </div>
+                    <div class="item-info">
+                        <h3>Grilled Cheese Sandwich</h3>
+                        <p>Melted cheese on buttery, toasted bread.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$62</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="29" data-name="Grilled Cheese Sandwich" data-price="62" data-img="https://images.unsplash.com/photo-1604503468506-a6da5e6ad46b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZHVjayUyMGJyZWFzdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="29" data-name="Grilled Cheese Sandwich" data-price="62">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special 6 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.39.01 AM.jpeg" alt="Margherita Pizza">
+                        
+                    </div>
+                    <div class="item-info">
+                        <h3>Margherita Pizza</h3>
+                        <p>Classic pizza with mozzarella, tomato sauce, and basil.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$165</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="30" data-name="Margherita Pizza" data-price="165" data-img="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8c2VhZm9vZHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="30" data-name="Margherita Pizza" data-price="165">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special 7 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.38.27 AM.jpeg" alt="Pepperoni Pizza">
+                       <div class="item-badge">Chef's Special</div>
+                    </div>
+                    <div class="item-info">
+                        <h3>Pepperoni Pizza</h3>
+                        <p>Loaded with spicy pepperoni and melted cheese.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$68</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="31" data-name="Pepperoni Pizza" data-price="68" data-img="https://images.unsplash.com/photo-1546833999-b9f581a1996d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZmlsZXQlMjBtaWdub258ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="31" data-name="Pepperoni Pizza" data-price="68">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Special 8 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.39.02 AM.jpeg" alt="BBQ Chicken Pizza">
+                      
+                    </div>
+                    <div class="item-info">
+                        <h3>BBQ Chicken Pizza</h3>
+                        <p>Tangy BBQ sauce with grilled chicken and onions.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$72</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="32" data-name="BBQ Chicken Pizza" data-price="72" data-img="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dmVhbCUyMGNob3B8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="32" data-name="BBQ Chicken Pizza" data-price="72">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Drinks -->
+    <section id="drinks" class="menu-section section-padding">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Beverages</h2>
+                <p class="section-subtitle">Curated beverages to complement your meal</p>
+            </div>
+            <div class="menu-grid">
+                <!-- Drink 1 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.54.49 AM.jpeg" alt="Fresh Lemonade">
+                      
+                    </div>
+                    <div class="item-info">
+                        <h3>Fresh Lemonade</h3>
+                        <p>Zesty, refreshing lemonade made with fresh lemons.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$15</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="33" data-name="Fresh Lemonade" data-price="15" data-img="https://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2luZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="33" data-name="Fresh Lemonade" data-price="15">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink 2 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 7.54.48 AM.jpeg" alt="Iced Tea">
+                    </div>
+                    <div class="item-info">
+                        <h3>Iced Tea with Lemon</h3>
+                        <p>Chilled tea infused with fruity or citrus flavors.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$18</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="34" data-name="Iced Tea with Lemon" data-price="18" data-img="https://images.unsplash.com/photo-1535958636474-b021ee887b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29ja3RhaWx8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="34" data-name="Iced Tea with Lemon" data-price="18">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink 3 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 8.08.22 AM (1).jpeg" alt="Mango Smoothie">
+                    </div>
+                    <div class="item-info">
+                        <h3>Mango Smoothie</h3>
+                        <p>Creamy blended mango drink with a tropical twist.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$12</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="35" data-name="Mango Smoothie" data-price="12" data-img="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="35" data-name="Mango Smoothie" data-price="12">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink 4 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 8.08.22 AM.jpeg" style="object-position: center 30%;" alt="Strawberry Milkshake">
+                    </div>
+                    <div class="item-info">
+                        <h3>Strawberry Milkshake</h3>
+                        <p>Classic creamy shake made with fresh strawberries.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$20</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="36" data-name="Strawberry Milkshake" data-price="20" data-img="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&ixid=M3wxMjA3极DB8MHxzZWFyY2h8NXx8Y2hhbXBhZ25lfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=极0">Add to Cart</button>
+                                <button class="btn-buy" data-id="36" data-name="Strawberry Milkshake" data-price="20">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink 5 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 8.08.21 AM.jpeg" style="object-position: center 40%;" alt="Cold Coffee Frappe">
+                    </div>
+                    <div class="item-info">
+                        <h3>Cold Coffee Frappe</h3>
+                        <p>Iced coffee blended with milk and topped with foam and Chocolate.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$37</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="37" data-name="Cold Coffee Frappe" data-price="18" data-img="极://images.unsplash.com/photo-1470337458703-46ad1756a187?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8d2luZXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="37" data-name="Cold Coffee Frappe" data-price="18">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink 6 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 8.19.10 AM.jpeg" style="object-position: center 80%;" alt="Cappuccino">
+                    </div>
+                    <div class="item-info">
+                        <h3>Cappuccino</h3>
+                        <p>Espresso topped with steamed milk and a layer of froth.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$12</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="38" data-name="Cappuccino" data-price="12" data-img="https://images.unsplash.com/photo-1535958636474-b021ee887b13?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8Y29ja3RhaWx8ZW58MHx8MHx8fDA%3极&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="38" data-name="Cappuccino" data-price="12">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink 7 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 8.19.12 AM.jpeg" alt="Hot Chocolate">
+                    </div>
+                    <div class="item-info">
+                        <h3>Hot Chocolate</h3>
+                        <p>Warm, velvety chocolate drink with whipped cream.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$15</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="39" data-name="Hot Chocolate" data-price="15" data-img="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlZXJ8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="39" data-name="Hot Chocolate" data-price="15">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Drink 8 -->
+                <div class="menu-item">
+                    <div class="item-image">
+                        <img src="images/WhatsApp Image 2025-09-12 at 8.10.17 AM.jpeg" style="object-position: center 30%;" alt="Sparkling Water">
+                    </div>
+                    <div class="item-info">
+                        <h3>Sparkling Water</h3>
+                        <p>Lightly carbonated water, served chilled.</p>
+                        <div class="item-meta">
+                            <span class="item-price">$16</span>
+                            <div class="item-actions">
+                                <button class="btn-add" data-id="40" data-name="Sparkling Water" data-price="16" data-img="https://images.unsplash.com/photo-1544145945-f90425340c7e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2极8NX极8Y2hhbXBhZ25lfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80">Add to Cart</button>
+                                <button class="btn-buy" data-id="40" data-name="Sparkling Water" data-price="16">Buy Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cart Modal -->
+    <div class="cart-modal">
+        
+        <div class="cart-modal-content">
+            <span class="cart-close">&times;</span>
+            <h2 class="cart-title">Your Cart</h2>
+            <div class="cart-items">
+                <!-- Cart items will be populated here -->
+            </div>
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-price">$0.00</span>
+            </div>
+            <div class="cart-buttons">
+                <button class="btn btn-primary" id="place-order-btn">Place Order</button>
+                <button class="btn btn-secondary" id="continue-shopping">Continue Shopping</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formspree Modal for Single Item -->
+    <div class="formspree-modal" id="single-item-modal">
+        <div class="formspree-modal-content">
+            <span class="formspree-close">&times;</span>
+            <h2>Order <span id="product-name"></span></h2>
+            <form action="https://formspree.io/f/mdklbqpl" method="POST" id="single-item-form">
+                <input type="hidden" name="product" id="form-product">
+                <input type="hidden" name="price" id="form-price">
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div class="order-item">
+                        <span id="summary-product-name"></span>
+                        <span id="summary-product-price"></span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="single-name">Full Name</label>
+                    <input type="text" id="single-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="single-email">Email Address</label>
+                    <input type="email" id="single-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="single-phone">Phone Number</label>
+                    <input type="tel" id="single-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="single-address">Delivery Address</label>
+                    <textarea id="single-address" name="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="single-notes">Special Instructions</label>
+                    <textarea id="single-notes" name="notes" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Complete Order</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Formspree Modal for Cart -->
+    <div class="formspree-modal" id="cart-modal">
+        <div class="formspree-modal-content">
+            <span class="formspree-close">&times;</span>
+            <h2>Place Your Order</h2>
+            <form action="https://formspree.io/f/mdklbqpl" method="POST" id="cart-order-form">
+                <input type="hidden" name="order_details" id="order-details">
+                <input type="hidden" name="order_total" id="order-total">
+                
+                <div class="order-summary">
+                    <h4>Order Summary</h4>
+                    <div id="cart-order-summary">
+                        <!-- Cart items will be populated here -->
+                    </div>
+                    <div class="order-item" style="font-weight: bold; border-top: 1px solid var(--tertiary-color); padding-top: 5px;">
+                        <span>Total:</span>
+                        <span id="cart-summary-total">$0.00</span>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="cart-name">Full Name</label>
+                    <input type="text" id="cart-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-email">Email Address</label>
+                    <input type="email" id="cart-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-phone">Phone Number</label>
+                    <input type="tel" id="cart-phone" name="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="cart-address">Delivery Address</label>
+                    <textarea id="cart-address" name="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cart-notes">Special Instructions</label>
+                    <textarea id="cart-notes" name="notes" rows="2"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Complete Order</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Cart functionality
+        let cart = [];
+        const cartCount = document.querySelector('.cart-count');
+        const cartModal = document.querySelector('.cart-modal');
+        const cartItems = document.querySelector('.cart-items');
+        const cartTotalPrice = document.querySelector('.cart-total-price');
+        const cartIcon = document.querySelector('.cart-icon');
+        const closeCart = document.querySelector('.cart-close');
+        const continueShopping = document.getElementById('continue-shopping');
+        const placeOrderBtn = document.getElementById('place-order-btn');
+        
+        // Formspree modals
+        const singleItemModal = document.getElementById('single-item-modal');
+        const cartOrderModal = document.getElementById('cart-modal');
+        const singleItemClose = singleItemModal.querySelector('.formspree-close');
+        const cartOrderClose = cartOrderModal.querySelector('.formspree-close');
+
+        // Initialize cart from localStorage if available
+        function initCart() {
+            const savedCart = localStorage.getItem('restaurantCart');
+            if (savedCart) {
+                cart = JSON.parse(savedCart);
+                updateCartCount();
+            }
+        }
+
+        cartIcon.addEventListener('click', function() {
+    renderCartItems();
+    cartModal.style.display = 'block';
+});
+
+        // Update cart count badge
+        function updateCartCount() {
+            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+            cartCount.textContent = totalItems;
+        }
+
+        // Add item to cart
+        function addToCart(id, name, price, img) {
+            const existingItem = cart.find(item => item.id === id);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({
+                    id,
+                    name,
+                    price,
+                    img,
+                    quantity: 1
+                });
+            }
+            
+            // Save to localStorage
+            localStorage.setItem('restaurantCart', JSON.stringify(cart));
+            
+            updateCartCount();
+            showNotification(`${name} added to cart`);
+            
+            // Open cart modal when adding an item
+            renderCartItems();
+            cartModal.style.display = 'block';
+        }
+
+        // Remove item from cart
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            localStorage.setItem('restaurantCart', JSON.stringify(cart));
+            updateCartCount();
+            renderCartItems();
+        }
+
+        // Update item quantity
+        function updateQuantity(id, change) {
+            const item = cart.find(item => item.id === id);
+            if (item) {
+                item.quantity += change;
+                
+                if (item.quantity <= 0) {
+                    removeFromCart(id);
+                } else {
+                    localStorage.setItem('restaurantCart', JSON.stringify(cart));
+                    updateCartCount();
+                    renderCartItems();
+                }
+            }
+        }
+
+        // Render cart items
+        function renderCartItems() {
+            cartItems.innerHTML = '';
+            
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<p class="empty-cart">Your cart is empty</p>';
+                cartTotalPrice.textContent = '$0.00';
+                placeOrderBtn.disabled = true;
+                return;
+            }
+            
+            let total = 0;
+            
+            cart.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                total += itemTotal;
+                
+                const cartItem = document.createElement('div');
+                cartItem.className = 'cart-item';
+                cartItem.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>$${item.price.toFixed(2)} each</p>
+                    </div>
+                    <div class="cart-item-quantity">
+                        <button class="quantity-btn minus" data-id="${item.id}">-</button>
+                        <span>${item.quantity}</span>
+                        <button class="quantity-btn plus" data-id="${item.id}">+</button>
+                    </div>
+                    <div class="cart-item-price">$${itemTotal.toFixed(2)}</div>
+                    <button class="cart-item-remove" data-id="${item.id}">&times;</button>
+                `;
+                
+                cartItems.appendChild(cartItem);
+            });
+            
+            cartTotalPrice.textContent = `$${total.toFixed(2)}`;
+            placeOrderBtn.disabled = false;
+            
+            // Add event listeners to quantity buttons
+            document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    updateQuantity(id, -1);
+                });
+            });
+            
+            
+            document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    updateQuantity(id, 1);
+                });
+            });
+            
+            // Add event listeners to remove buttons
+            document.querySelectorAll('.cart-item-remove').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const id = btn.getAttribute('data-id');
+                    removeFromCart(id);
+                });
+            });
+        }
+
+        // Show notification
+        function showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.position = 'fixed';
+            notification.style.bottom = '20px';
+            notification.style.right = '20px';
+            notification.style.backgroundColor = 'var(--accent-color)';
+            notification.style.color = 'white';
+            notification.style.padding = '10px 20px';
+            notification.style.borderRadius = '3px';
+            notification.style.zIndex = '10000';
+            notification.style.boxShadow = '0 4px 12px rgba(0,0,0,0.15)';
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 500);
+            }, 3000);
+        }
+
+        // DOM Content Loaded
+        document.addEventListener('DOMContentLoaded', function() {
+            initCart();
+            
+            // Mobile Menu Toggle
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            
+            if (hamburger && navMenu) {
+                hamburger.addEventListener('click', function() {
+                    hamburger.classList.toggle('active');
+                    navMenu.classList.toggle('active');
+                });
+            }
+            
+            // Close mobile menu when clicking on a link
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (hamburger && navMenu) {
+                        hamburger.classList.remove('active');
+                        navMenu.classList.remove('active');
+                    }
+                });
+            });
+            
+            // Add to Cart buttons
+            const addToCartButtons = document.querySelectorAll('.btn-add');
+            addToCartButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const id = this.getAttribute('data-id');
+                    const name = this.getAttribute('data-name');
+                    const price = parseFloat(this.getAttribute('data-price'));
+                    const img = this.getAttribute('data-img');
+                    
+                    addToCart(id, name, price, img);
+                });
+            });
+            
+            // Buy Now buttons
+            const buyNowButtons = document.querySelectorAll('.btn-buy');
+            const productName = document.getElementById('product-name');
+            const formProduct = document.getElementById('form-product');
+            const formPrice = document.getElementById('form-price');
+            const summaryProductName = document.getElementById('summary-product-name');
+            const summaryProductPrice = document.getElementById('summary-product-price');
+            
+            buyNowButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const name = this.getAttribute('data-name');
+                    const price = this.getAttribute('data-price');
+                    
+                    productName.textContent = name;
+                    formProduct.value = name;
+                    formPrice.value = price;
+                    summaryProductName.textContent = name;
+                    summaryProductPrice.textContent = `$${price}`;
+                    
+                    singleItemModal.style.display = 'block';
+                });
+            });
+            
+            // Cart functionality
+            cartIcon.addEventListener('click', function() {
+                renderCartItems();
+                cartModal.style.display = 'block';
+            });
+            
+            closeCart.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+            
+            continueShopping.addEventListener('click', function() {
+                cartModal.style.display = 'none';
+            });
+            
+            placeOrderBtn.addEventListener('click', function() {
+                // Prepare order details for Formspree
+                let orderDetails = '';
+                let total = 0;
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    total += itemTotal;
+                    orderDetails += `${item.quantity}x ${item.name} - $${itemTotal.toFixed(2)}\n`;
+                });
+                
+                document.getElementById('order-details').value = orderDetails;
+                document.getElementById('order-total').value = total.toFixed(2);
+                
+                // Update order summary in the form
+                const cartOrderSummary = document.getElementById('cart-order-summary');
+                cartOrderSummary.innerHTML = '';
+                
+                cart.forEach(item => {
+                    const itemTotal = item.price * item.quantity;
+                    const orderItem = document.createElement('div');
+                    orderItem.className = 'order-item';
+                    orderItem.innerHTML = `
+                        <span>${item.quantity}x ${item.name}</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    `;
+                    cartOrderSummary.appendChild(orderItem);
+                });
+                
+                document.getElementById('cart-summary-total').textContent = `$${total.toFixed(2)}`;
+                
+                // Show the cart order modal
+                cartModal.style.display = 'none';
+                cartOrderModal.style.display = 'block';
+            });
+            
+            // Close modals when clicking on close buttons
+            singleItemClose.addEventListener('click', function() {
+                singleItemModal.style.display = 'none';
+            });
+            
+            cartOrderClose.addEventListener('click', function() {
+                cartOrderModal.style.display = 'none';
+            });
+            
+            // Close modals when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === cartModal) {
+                    cartModal.style.display = 'none';
+                }
+                if (e.target === singleItemModal) {
+                    singleItemModal.style.display = 'none';
+                }
+                if (e.target === cartOrderModal) {
+                    cartOrderModal.style.display = 'none';
+                }
+            });
+            
+            // Category navigation
+            const categoryLinks = document.querySelectorAll('.category-link');
+            categoryLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all links
+                    categoryLinks.forEach(l => l.classList.remove('active'));
+                    
+                    // Add active class to clicked link
+                    this.classList.add('active');
+                    
+                    // Scroll to section
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
